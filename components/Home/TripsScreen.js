@@ -76,7 +76,9 @@ export default function TripsScreen({ navigation, route }) {
   return (
     <ScrollView style={{ marginTop: 20 }}>
       <View style={{ justifyContent: "center", marginHorizontal: 50 }}>
-        <Text>{"Trip within 1 miles"}</Text>
+        <Text style={{ marginBottom: 10, margin: "auto" }}>
+          {"Trip within 1 miles"}
+        </Text>
         {rides
           .sort((a, b) => (a.distance > b.distance ? 1 : -1))
           .map((rideInfo, index) => (
@@ -84,6 +86,7 @@ export default function TripsScreen({ navigation, route }) {
               key={index}
               index={index}
               rideInfo={rideInfo}
+              type={"rideSearch"}
               onPressed={() => {
                 navigation.navigate("Trip Detail", {
                   rideInfo: rideInfo,

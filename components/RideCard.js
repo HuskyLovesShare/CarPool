@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { View } from "react-native";
 
@@ -15,6 +15,7 @@ import {
 
 export default function RideCard(props) {
   const rideInfo = props.rideInfo;
+  const [hasJoined, setHasJoined] = useState(false);
 
   return (
     <Box alignItems="center" marginBottom={5}>
@@ -42,41 +43,44 @@ export default function RideCard(props) {
               borderWidth="1"
               borderColor="coolGray.300"
             >
-              <HStack alignItems="center">
-                {rideInfo.fee == 0 ? (
-                  <Badge
-                    colorScheme="green"
-                    _text={{
-                      color: "white",
-                    }}
-                    variant="solid"
-                    rounded="4"
-                  >
-                    Free
-                  </Badge>
-                ) : null}
-
-                {rideInfo.verifiedDriver ? (
-                  <>
-                    {rideInfo.fee == 0 ? <View style={{ width: 5 }} /> : null}
+              {props.type == "rideHistory" ? null : (
+                <HStack alignItems="center">
+                  {rideInfo.fee == 0 ? (
                     <Badge
-                      colorScheme="lightBlue"
+                      colorScheme="green"
                       _text={{
                         color: "white",
                       }}
                       variant="solid"
                       rounded="4"
                     >
-                      Verified
+                      Free
                     </Badge>
-                  </>
-                ) : null}
+                  ) : null}
 
-                <Spacer />
-                <Text fontSize={10} color="coolGray.800">
-                  {`${rideInfo.distance} miles`}
-                </Text>
-              </HStack>
+                  {rideInfo.verifiedDriver ? (
+                    <>
+                      {rideInfo.fee == 0 ? <View style={{ width: 5 }} /> : null}
+                      <Badge
+                        colorScheme="lightBlue"
+                        _text={{
+                          color: "white",
+                        }}
+                        variant="solid"
+                        rounded="4"
+                      >
+                        Verified
+                      </Badge>
+                    </>
+                  ) : null}
+
+                  <Spacer />
+                  <Text fontSize={10} color="coolGray.800">
+                    {`${rideInfo.distance} miles`}
+                  </Text>
+                </HStack>
+              )}
+
               <Text
                 color="coolGray.800"
                 mt="1"
@@ -98,35 +102,45 @@ export default function RideCard(props) {
                 {`Driver: ${rideInfo.driver}`}
               </Text>
 
-              <Text mt="0" fontSize="sm" color="coolGray.700">
-                {`Available: ${rideInfo.available}/${rideInfo.totalPositions}`}
-              </Text>
+              {props.type == "rideHistory" ? null : (
+                <>
+                  <Text mt="0" fontSize="sm" color="coolGray.700">
+                    {`Available: ${rideInfo.available}/${rideInfo.totalPositions}`}
+                  </Text>
 
-              <Flex>
-                {isFocused ? (
-                  <Button
-                    mt="2"
-                    fontSize={12}
-                    fontWeight="medium"
-                    textDecorationLine="underline"
-                    color="darkBlue.600"
-                    alignSelf="flex-start"
-                    onPress={props.onPressed}
-                  >
-                    Join
-                  </Button>
-                ) : (
-                  <Button
-                    mt="2"
-                    fontSize={12}
-                    fontWeight="medium"
-                    color="darkBlue.600"
-                    onPress={props.onPressed}
-                  >
-                    Join
-                  </Button>
-                )}
-              </Flex>
+                  <Flex>
+                    {isFocused ? (
+                      <Button
+                        mt="2"
+                        fontSize={12}
+                        fontWeight="medium"
+                        textDecorationLine="underline"
+                        color="darkBlue.600"
+                        colorScheme={hasJoined ? "rose" : "lightBlue"}
+                        alignSelf="flex-start"
+                        onPress={() => {
+                          setHasJoined(!hasJoined);
+                        }}
+                      >
+                        {hasJoined ? "Cancel" : "Join"}
+                      </Button>
+                    ) : (
+                      <Button
+                        mt="2"
+                        fontSize={12}
+                        fontWeight="medium"
+                        color="darkBlue.600"
+                        colorScheme={hasJoined ? "rose" : "lightBlue"}
+                        onPress={() => {
+                          setHasJoined(!hasJoined);
+                        }}
+                      >
+                        {hasJoined ? "Cancel" : "Join"}
+                      </Button>
+                    )}
+                  </Flex>
+                </>
+              )}
             </Box>
           );
         }}

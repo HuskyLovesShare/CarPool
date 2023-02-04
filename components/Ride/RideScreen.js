@@ -91,6 +91,7 @@ export default function RideScreen({ navigation, route }) {
               key={index}
               index={index}
               rideInfo={rideInfo}
+              type={"rideHistory"}
               onPressed={() => {
                 navigation.navigate("Ride History Detail", {
                   rideInfo: rideInfo,
