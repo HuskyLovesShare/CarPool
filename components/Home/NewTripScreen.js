@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Button, Text, StyleSheet, TextInput } from "react-native";
+import {
+  View,
+  Button,
+  Text,
+  StyleSheet,
+  TextInput,
+  ScrollView,
+} from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
 export default function NewTripScreen({ navigation, route }) {
@@ -26,7 +33,10 @@ export default function NewTripScreen({ navigation, route }) {
   };
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <ScrollView
+      contentContainerStyle={{ marginTop: 50, marginHorizontal: 30 }}
+      keyboardShouldPersistTaps="handled"
+    >
       <Text>{"New Trip"}</Text>
       <Text>{route.params.isToNEU ? "is to NEU" : "is Leave NEU"}</Text>
       <Text>
@@ -109,6 +119,6 @@ export default function NewTripScreen({ navigation, route }) {
       </View>
       <Text>{`Total Price: ${Number(price) + Number(parkingPrice)}`}</Text>
       <Button title={"Submit"} onPress={() => navigation.popToTop()} />
-    </View>
+    </ScrollView>
   );
 }
