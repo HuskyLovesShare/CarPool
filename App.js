@@ -11,7 +11,6 @@ export default function App() {
       <NavigationContainer>
         <Tabs />
       </NavigationContainer>
-      <View style={{ height: 20 }} />
     </SafeAreaProvider>
   );
 }
