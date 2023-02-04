@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {ScrollView, Text, View} from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import RideHistoryCard from "./RideHistoryCard";
 
 export default function RideScreen({ navigation, route }) {
@@ -65,7 +65,15 @@ export default function RideScreen({ navigation, route }) {
     <ScrollView style={{ marginTop: 20 }}>
       <View style={{ justifyContent: "center", marginHorizontal: 50 }}>
         {rides
-          .sort((a, b) => (a.date > b.date ? 1 : (a.date < b.date ? -1 : a.date > b.date ? 1 : -1)))
+          .sort((a, b) =>
+            a.date > b.date
+              ? 1
+              : a.date < b.date
+              ? -1
+              : a.date > b.date
+              ? 1
+              : -1
+          )
           .map((rideInfo, index) => (
             <RideHistoryCard
               key={index}
@@ -74,8 +82,6 @@ export default function RideScreen({ navigation, route }) {
               onPressed={() => {
                 navigation.navigate("Ride History Detail", {
                   rideInfo: rideInfo,
-                  isDriver: route.params.isDriver,
-                  isToNEU: route.params.isToNEU,
                 });
               }}
             />

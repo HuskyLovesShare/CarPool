@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import HomeScreen from "./Home/HomeScreen";
-import RideScreen from "./Ride/RideScreen";
+import RideNavigator from "./Ride/RideNavigator";
 import SettingsScreen from "./SettingsScreen";
 
 const Tab = createBottomTabNavigator();
@@ -23,7 +23,7 @@ export default function Tabs() {
       />
       <Tab.Screen
         name="Ride"
-        component={RideScreen}
+        component={RideNavigator}
         options={{
           tabBarLabel: "Ride",
           tabBarIcon: ({ color, size }) => (

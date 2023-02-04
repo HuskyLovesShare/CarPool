@@ -6,10 +6,6 @@ export default function RideDetailHistoryScreen({ navigation, route }) {
   const rideInfo = route.params.rideInfo;
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>{route.params.isToNEU ? "is to NEU" : "is Leave NEU"}</Text>
-      <Text>
-        {route.params.isDriver ? "is Driver: true" : "is Driver: false"}
-      </Text>
       <Text>{"TripDetailScreen"}</Text>
       <Text>{`Time: ${rideInfo.time}`}</Text>
       <Text>{`Location: ${rideInfo.location}`}</Text>
