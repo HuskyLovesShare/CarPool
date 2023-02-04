@@ -5,11 +5,11 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  ScrollView, TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import DriverMap from "../DriverMap";
-import {Box, FormControl, Input} from "native-base";
+import { Box, FormControl, Input } from "native-base";
 
 export default function NewTripScreen({ navigation, route }) {
   const [address, setAddress] = useState("");
@@ -35,39 +35,47 @@ export default function NewTripScreen({ navigation, route }) {
   };
 
   const Address = () => {
-    return <Box alignItems="center">
-      <FormControl isInvalid w="100%" minW="300px">
-        <FormControl.Label>Address</FormControl.Label>
-        <Input placeholder="Enter address" />
-      </FormControl>
-    </Box>;
+    return (
+      <Box alignItems="center">
+        <FormControl isInvalid w="100%" minW="300px">
+          <FormControl.Label>Address</FormControl.Label>
+          <Input placeholder="Enter address" />
+        </FormControl>
+      </Box>
+    );
   };
 
   const NumOfPeople = () => {
-    return <Box alignItems="center">
-      <FormControl isInvalid w="100%" minW="300px">
-        <FormControl.Label>Number of People</FormControl.Label>
-        <Input placeholder="0" />
-      </FormControl>
-    </Box>;
+    return (
+      <Box alignItems="center">
+        <FormControl isInvalid w="100%" minW="300px">
+          <FormControl.Label>Number of People</FormControl.Label>
+          <Input placeholder="0" />
+        </FormControl>
+      </Box>
+    );
   };
 
   const RideFee = () => {
-    return <Box alignItems="center">
-      <FormControl isInvalid w="100%" minW="300px">
-        <FormControl.Label>Ride Fee</FormControl.Label>
-        <Input placeholder="0" />
-      </FormControl>
-    </Box>;
+    return (
+      <Box alignItems="center">
+        <FormControl isInvalid w="100%" minW="300px">
+          <FormControl.Label>Ride Fee</FormControl.Label>
+          <Input placeholder="0" />
+        </FormControl>
+      </Box>
+    );
   };
 
   const ParkingFee = () => {
-    return <Box alignItems="center">
-      <FormControl isInvalid w="100%" minW="300px">
-        <FormControl.Label>Parking Fee</FormControl.Label>
-        <Input placeholder="0" />
-      </FormControl>
-    </Box>;
+    return (
+      <Box alignItems="center">
+        <FormControl isInvalid w="100%" minW="300px">
+          <FormControl.Label>Parking Fee</FormControl.Label>
+          <Input placeholder="0" />
+        </FormControl>
+      </Box>
+    );
   };
 
   return (
@@ -82,7 +90,12 @@ export default function NewTripScreen({ navigation, route }) {
       {/*</Text>*/}
 
       <View
-        style={{ display: "flex", flexDirection: "row", alignItems: "center", marginBottom: 20}}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          marginBottom: 20,
+        }}
       >
         {/*<Address />*/}
         {/*<Text>{"Address "}</Text>*/}
@@ -95,7 +108,12 @@ export default function NewTripScreen({ navigation, route }) {
       </View>
 
       <View
-        style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: 20}}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginBottom: 20,
+        }}
       >
         <DateTimePicker
           testID="dateTimePicker"
@@ -114,7 +132,12 @@ export default function NewTripScreen({ navigation, route }) {
       </View>
 
       <View
-        style={{ display: "flex", flexDirection: "row", alignItems: "center", marginBottom: 20}}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          marginBottom: 20,
+        }}
       >
         <NumOfPeople />
         {/*<Text>{"Number of People "}</Text>*/}
@@ -127,21 +150,37 @@ export default function NewTripScreen({ navigation, route }) {
         {/*/>*/}
       </View>
 
-      <View style={{ display: "flex", flexDirection: "row", alignItems: "center", marginBottom: 20}}>
+      <View
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          marginBottom: 20,
+        }}
+      >
         <DriverMap />
       </View>
 
       <View
-          style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: 20}}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginBottom: 20,
+        }}
       >
         <Text>{"Distance: 10 miles"}</Text>
         <Text>{"Recommended Price: $20"}</Text>
       </View>
 
       <View
-        style={{ display: "flex", flexDirection: "row", alignItems: "center", marginBottom: 20}}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          marginBottom: 20,
+        }}
       >
-
         <RideFee />
         {/*<Text>{"Ride Fee "}</Text>*/}
         {/*<TextInput*/}
@@ -157,7 +196,7 @@ export default function NewTripScreen({ navigation, route }) {
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
-          marginBottom: 20
+          marginBottom: 20,
         }}
       >
         {/*<Text>{"Parking Fee"}</Text>*/}
@@ -171,7 +210,11 @@ export default function NewTripScreen({ navigation, route }) {
         <ParkingFee />
       </View>
       <Text>{`Total Price: ${Number(price) + Number(parkingPrice)}`}</Text>
-      <Button title={"Submit"} onPress={() => navigation.popToTop()} style={{paddingBottom: 100}} />
+      <Button
+        title={"Submit"}
+        onPress={() => navigation.popToTop()}
+        style={{ paddingBottom: 100 }}
+      />
     </ScrollView>
   );
 }

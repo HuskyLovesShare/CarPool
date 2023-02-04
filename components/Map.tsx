@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import { Text, View, Dimensions, TouchableOpacity } from "react-native";
 import MapView, { LatLng, Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { StyleSheet } from "react-native";
@@ -53,9 +53,16 @@ function InputAutocomplete({
   );
 }
 
-export default function HomeScreen() {
-  const [origin, setOrigin] = useState<LatLng | null>();
-  const [destination, setDestination] = useState<LatLng | null>();
+export default function Map() {
+  const [origin, setOrigin] = useState<LatLng | null>({
+    latitude: 47.6228341,
+    longitude: -122.337364,
+  });
+  const [destination, setDestination] = useState<LatLng | null>({
+    latitude: 47.6145332,
+    longitude: -122.2031268,
+  });
+
   const [showDirections, setShowDirections] = useState(false);
   const [distance, setDistance] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -94,6 +101,10 @@ export default function HomeScreen() {
     }
   };
 
+  useEffect(() => {
+    traceRoute();
+  });
+
   const onPlaceSelected = (
     details: GooglePlaceDetail | null,
     flag: "origin" | "destination"
@@ -130,12 +141,14 @@ export default function HomeScreen() {
       <View style={styles.searchContainer}>
         <InputAutocomplete
           label="Origin"
+          placeholder={"225 Terry Avenue North, Seattle, WA, USA"}
           onPlaceSelected={(details) => {
             onPlaceSelected(details, "origin");
           }}
         />
         <InputAutocomplete
           label="Destination"
+          placeholder={"Bellevue Square"}
           onPlaceSelected={(details) => {
             onPlaceSelected(details, "destination");
           }}

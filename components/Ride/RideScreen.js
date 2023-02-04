@@ -7,7 +7,7 @@ export default function RideScreen({ navigation, route }) {
     {
       date: "Feb 4",
       time: "8:15AM",
-      location: "Bellevue Downtown",
+      location: "Bellevue Square",
       distance: 0.5,
       fee: 0,
       totalPositions: 3,
@@ -30,7 +30,7 @@ export default function RideScreen({ navigation, route }) {
     {
       date: "Feb 3",
       time: "6:20 PM",
-      location: "Bellevue Downtown",
+      location: "University of Washington",
       distance: 0.8,
       fee: 20,
       totalPositions: 3,
@@ -41,7 +41,7 @@ export default function RideScreen({ navigation, route }) {
     {
       date: "Feb 3",
       time: "12:20 PM",
-      location: "Bellevue Downtown",
+      location: "Bellevue Square",
       distance: 1.0,
       fee: 0,
       totalPositions: 3,
@@ -63,7 +63,7 @@ export default function RideScreen({ navigation, route }) {
     {
       date: "Feb 5",
       time: "7:20 AM",
-      location: "Bellevue Downtown",
+      location: "University of Washington",
       distance: 0.7,
       fee: 15,
       totalPositions: 3,
@@ -72,7 +72,6 @@ export default function RideScreen({ navigation, route }) {
       verifiedDriver: true,
     },
   ]);
-
   return (
     <ScrollView style={{ marginTop: 20 }}>
       <View style={{ justifyContent: "center", marginHorizontal: 50 }}>
