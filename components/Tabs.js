@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import HomeScreen from "./HomeScreen";
+import HomeScreen from "./Home/HomeScreen";
 import RideScreen from "./RideScreen";
 import SettingsScreen from "./SettingsScreen";
 
