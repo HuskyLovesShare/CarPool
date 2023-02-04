@@ -1,63 +1,75 @@
 import React, { useState } from "react";
 import { ScrollView, Text, View } from "react-native";
-import RideHistoryCard from "./RideHistoryCard";
+import RideCard from "../RideCard";
 
 export default function RideScreen({ navigation, route }) {
   const [rides, setRides] = useState([
     {
-      date: "2022-11-02",
-      time: "08:15",
+      date: "Feb 4",
+      time: "8:15AM",
       location: "Bellevue Downtown",
       distance: 0.5,
-      fee: 20,
+      fee: 0,
       totalPositions: 3,
+      available: 1,
       driver: "Benjamin",
+      verifiedDriver: true,
     },
     {
-      date: "2022-08-12",
-      time: "18:20",
+      date: "Feb 4",
+      time: "8:20 PM",
       location: "Bellevue Downtown",
       distance: 0.3,
       fee: 15,
       totalPositions: 3,
+      available: 2,
       driver: "John",
+      verifiedDriver: false,
     },
 
     {
-      date: "2022-09-25",
-      time: "14:20",
+      date: "Feb 3",
+      time: "6:20 PM",
       location: "Bellevue Downtown",
       distance: 0.8,
-      fee: 15,
+      fee: 20,
       totalPositions: 3,
+      available: 3,
       driver: "Bill",
+      verifiedDriver: true,
     },
     {
-      date: "2021-04-30",
-      time: "12:20",
+      date: "Feb 3",
+      time: "12:20 PM",
       location: "Bellevue Downtown",
       distance: 1.0,
-      fee: 15,
+      fee: 0,
       totalPositions: 3,
+      available: 1,
       driver: "Jack",
+      verifiedDriver: true,
     },
     {
-      date: "2023-01-02",
-      time: "00:23",
+      date: "Feb 4",
+      time: "12:23 PM",
       location: "Bellevue Downtown",
       distance: 0.1,
-      fee: 15,
+      fee: 0,
       totalPositions: 3,
+      available: 1,
       driver: "Julie",
+      verifiedDriver: false,
     },
     {
-      date: "2022-12-22",
-      time: "07:20",
+      date: "Feb 5",
+      time: "7:20 AM",
       location: "Bellevue Downtown",
       distance: 0.7,
       fee: 15,
       totalPositions: 3,
+      available: 2,
       driver: "Rachel",
+      verifiedDriver: true,
     },
   ]);
 
@@ -75,7 +87,7 @@ export default function RideScreen({ navigation, route }) {
               : -1
           )
           .map((rideInfo, index) => (
-            <RideHistoryCard
+            <RideCard
               key={index}
               index={index}
               rideInfo={rideInfo}
