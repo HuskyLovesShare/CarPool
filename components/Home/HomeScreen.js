@@ -6,6 +6,7 @@ import ChooseDirectionScreen from "./ChooseDirectionScreen";
 import NewTripScreen from "./NewTripScreen";
 import ChooseMoreInfoScreen from "./ChooseMoreInfoScreen";
 import TripsScreen from "./TripsScreen";
+import TripDetailScreen from "./TripDetailScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,8 @@ export default function HomeScreen() {
     //     headerShown: false,
     //   }}
     >
+      {/* <Stack.Screen name="Trips" component={TripsScreen} /> */}
+
       <Stack.Screen
         name="Home"
         component={ChooseIdentityScreen}
@@ -56,6 +59,14 @@ export default function HomeScreen() {
         initialParams={{
           isDriver: isDriver,
           setIsToNEU: setIsToNEU,
+          isToNEU: isToNEU,
+        }}
+      />
+      <Stack.Screen
+        name="Trip Detail"
+        component={TripDetailScreen}
+        initialParams={{
+          isDriver: isDriver,
           isToNEU: isToNEU,
         }}
       />

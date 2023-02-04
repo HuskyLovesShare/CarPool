@@ -12,8 +12,15 @@ export default function ChooseMoreInfoScreen({ navigation, route }) {
       </Text>
       <Text>{"Input Address"}</Text>
       <Text>{"Input Time"}</Text>
-      <Button title="Continue" onPress={() => navigation.navigate("Trips")} />
-      {/* add more props here to pass to the next screen */}
+      <Button
+        title="Continue"
+        onPress={() =>
+          navigation.navigate("Trips", {
+            isDriver: route.params.isDriver,
+            isToNEU: route.params.isToNEU,
+          })
+        }
+      />
     </View>
   );
 }

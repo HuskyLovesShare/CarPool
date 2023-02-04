@@ -14,9 +14,12 @@ export default function ChooseDirectionScreen({ navigation, route }) {
         title="To NEU"
         onPress={() => {
           if (route.params.isDriver) {
-            navigation.navigate("New Trip", { isToNEU: true });
+            navigation.navigate("New Trip", { isDriver: true, isToNEU: true });
           } else {
-            navigation.navigate("More Information", { isToNEU: true });
+            navigation.navigate("More Information", {
+              isDriver: false,
+              isToNEU: true,
+            });
           }
         }}
       />
@@ -24,9 +27,12 @@ export default function ChooseDirectionScreen({ navigation, route }) {
         title="Leave NEU"
         onPress={() => {
           if (route.params.isDriver) {
-            navigation.navigate("New Trip", { isToNEU: false });
+            navigation.navigate("New Trip", { isDriver: true, isToNEU: false });
           } else {
-            navigation.navigate("More Information", { isToNEU: false });
+            navigation.navigate("More Information", {
+              isDriver: false,
+              isToNEU: false,
+            });
           }
         }}
       />
