@@ -1,19 +1,12 @@
 import React from "react";
 import { View } from "react-native";
 
-import { NativeBaseProvider, Box, Button, Divider, Heading } from "native-base";
+import { Box, Button } from "native-base";
 
 export default function ChooseIdentityScreen({ navigation, route }) {
-  console.log(route.params);
-
   return (
-    <View style={{ flex: 1, alignItems: "center", marginTop: 150 }}>
-      <Box>
-        <Heading size="lg" fontSize={50} bold color={"lightBlue.500"}>
-          I want to{"     "}
-        </Heading>
-
-        <View style={{ height: 120 }} />
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Box width={"200"} minWidth={"150"}>
         <Button
           size="lg"
           variant="outline"
@@ -24,7 +17,7 @@ export default function ChooseIdentityScreen({ navigation, route }) {
         >
           Share
         </Button>
-        <View style={{ height: 20 }} />
+        <View style={{ height: 30 }} />
         <Button
           size="lg"
           variant="outline"
