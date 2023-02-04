@@ -18,7 +18,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.CarPool",
+      "config": {
+      "googleMapsApiKey": "AIzaSyDXNq5Xw6bYH_QWQWH_3NM5gdVYjkWXDe4"
+      }
     },
     "android": {
       "adaptiveIcon": {
