@@ -5,9 +5,10 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  ScrollView,
+  ScrollView, TouchableOpacity,
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import DriverMap from "../DriverMap";
 
 export default function NewTripScreen({ navigation, route }) {
   const [address, setAddress] = useState("");
@@ -85,6 +86,10 @@ export default function NewTripScreen({ navigation, route }) {
           placeholder="0"
           keyboardType="numeric"
         />
+      </View>
+
+      <View style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+        <DriverMap />
       </View>
 
       <Text>{"Distance: 10 miles"}</Text>

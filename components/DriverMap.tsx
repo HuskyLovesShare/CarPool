@@ -156,12 +156,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   map: {
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
+    width: '100%',
+    height: '100%',
   },
   searchContainer: {
     position: "absolute",
-    width: "90%",
+    width: "80%",
     backgroundColor: "white",
     shadowColor: "black",
     shadowOffset: { width: 2, height: 2 },
@@ -170,7 +170,8 @@ const styles = StyleSheet.create({
     elevation: 4,
     padding: 8,
     borderRadius: 8,
-    top: Constants.statusBarHeight,
+    // top: Constants.statusBarHeight,
+    top: 0,
   },
   input: {
     borderColor: "#888",
