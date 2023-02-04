@@ -16,6 +16,7 @@ export default function TripDetailScreen({ navigation, route }) {
       <Text>{`Distance: ${rideInfo.distance} miles`}</Text>
       <Text>{`Fee: $${rideInfo.fee}`}</Text>
       <Text>{`Available: ${rideInfo.available}/${rideInfo.totalPositions}`}</Text>
+      <Button title={"Join"} onPress={() => navigation.popToTop()} />
     </View>
   );
 }

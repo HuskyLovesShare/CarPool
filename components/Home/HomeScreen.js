@@ -20,8 +20,6 @@ export default function HomeScreen() {
     //     headerShown: false,
     //   }}
     >
-      {/* <Stack.Screen name="Trips" component={TripsScreen} /> */}
-
       <Stack.Screen
         name="Home"
         component={ChooseIdentityScreen}
