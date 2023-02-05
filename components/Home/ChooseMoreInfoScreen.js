@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  ScrollView,
-  TextInput,
-  StyleSheet,
-} from "react-native";
+import { View, Text, ScrollView, TextInput, StyleSheet } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { Box, FormControl, Input, WarningOutlineIcon, NativeBaseProvider, Center, Button } from "native-base";
+import {
+  Box,
+  FormControl,
+  Input,
+  WarningOutlineIcon,
+  NativeBaseProvider,
+  Center,
+  Button,
+} from "native-base";
 
 export default function ChooseMoreInfoScreen({ navigation, route }) {
   const [address, setAddress] = useState("");
@@ -29,21 +31,25 @@ export default function ChooseMoreInfoScreen({ navigation, route }) {
   };
 
   const Address = () => {
-    return <Box alignItems="center">
-      <FormControl isInvalid w="100%" minW="300px">
-        <FormControl.Label>Address</FormControl.Label>
-        <Input placeholder="Enter address" />
-      </FormControl>
-    </Box>;
+    return (
+      <Box alignItems="center">
+        <FormControl isInvalid w="100%" minW="300px">
+          <FormControl.Label>Address</FormControl.Label>
+          <Input placeholder="Enter address" />
+        </FormControl>
+      </Box>
+    );
   };
 
   const NumOfPeople = () => {
-    return <Box alignItems="center">
-      <FormControl isInvalid w="100%" minW="300px">
-        <FormControl.Label>Number of People</FormControl.Label>
-        <Input placeholder="0" />
-      </FormControl>
-    </Box>;
+    return (
+      <Box alignItems="center">
+        <FormControl isInvalid w="100%" minW="300px">
+          <FormControl.Label>Number of People</FormControl.Label>
+          <Input placeholder="0" />
+        </FormControl>
+      </Box>
+    );
   };
 
   return (
@@ -52,7 +58,12 @@ export default function ChooseMoreInfoScreen({ navigation, route }) {
       keyboardShouldPersistTaps="handled"
     >
       <View
-        style={{ display: "flex", flexDirection: "row", alignItems: "center", marginBottom: 20}}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          marginBottom: 20,
+        }}
       >
         <Address />
         {/*<Text>{"Address "}</Text>*/}
@@ -65,7 +76,12 @@ export default function ChooseMoreInfoScreen({ navigation, route }) {
       </View>
 
       <View
-        style={{ display: "flex", flexDirection: "row", alignItems: "center", marginBottom: 20}}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          marginBottom: 20,
+        }}
       >
         <DateTimePicker
           testID="dateTimePicker"
@@ -84,19 +100,24 @@ export default function ChooseMoreInfoScreen({ navigation, route }) {
       </View>
 
       <View
-        style={{ display: "flex", flexDirection: "row", alignItems: "center", marginBottom: 20}}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          marginBottom: 20,
+        }}
       >
-        <NumOfPeople/>
+        <NumOfPeople />
       </View>
       <Button
-          size="lg"
-          variant="outline"
-          onPress={() =>
-              navigation.navigate("Trips", {
-                isDriver: route.params.isDriver,
-                isToNEU: route.params.isToNEU,
-              })
-          }
+        size="lg"
+        variant="outline"
+        onPress={() =>
+          navigation.navigate("Trips", {
+            isDriver: route.params.isDriver,
+            isToNEU: route.params.isToNEU,
+          })
+        }
       >
         Continue
       </Button>

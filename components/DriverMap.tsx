@@ -1,15 +1,20 @@
 import * as React from "react";
-import { Text, View, Dimensions, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  Dimensions,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 import MapView, { LatLng, Marker, PROVIDER_GOOGLE } from "react-native-maps";
-import { StyleSheet } from "react-native";
 import {
   GooglePlaceDetail,
   GooglePlacesAutocomplete,
 } from "react-native-google-places-autocomplete";
 import { GOOGLE_API_KEY } from "../environments";
-import Constants from "expo-constants";
 import { useRef, useState } from "react";
 import MapViewDirections from "react-native-maps-directions";
+import { Pressable, SearchIcon } from "native-base";
 
 const { width, height } = Dimensions.get("window");
 
@@ -60,6 +65,7 @@ export default function HomeScreen() {
   const [distance, setDistance] = useState(0);
   const [duration, setDuration] = useState(0);
   const mapRef = useRef<MapView>(null);
+  const [showSearchBar, setShowSearchBar] = useState(true);
 
   const moveTo = async (position: LatLng) => {
     const camera = await mapRef.current?.getCamera();
@@ -127,23 +133,34 @@ export default function HomeScreen() {
           />
         )}
       </MapView>
-      <View style={styles.searchContainer}>
-        <InputAutocomplete
-          label="Origin"
-          onPlaceSelected={(details) => {
-            onPlaceSelected(details, "origin");
-          }}
-        />
-        <InputAutocomplete
-          label="Destination"
-          onPlaceSelected={(details) => {
-            onPlaceSelected(details, "destination");
-          }}
-        />
-        <TouchableOpacity style={styles.button} onPress={traceRoute}>
-          <Text style={styles.buttonText}>Trace Route</Text>
-        </TouchableOpacity>
-      </View>
+      {showSearchBar ? (
+        <View style={styles.searchContainer}>
+          <InputAutocomplete
+            label="Origin"
+            onPlaceSelected={(details) => {
+              onPlaceSelected(details, "origin");
+            }}
+          />
+          <InputAutocomplete
+            label="Destination"
+            onPlaceSelected={(details) => {
+              onPlaceSelected(details, "destination");
+            }}
+          />
+          <TouchableOpacity style={styles.button} onPress={traceRoute}>
+            <Text style={styles.buttonText}>Trace Route</Text>
+          </TouchableOpacity>
+        </View>
+      ) : null}
+
+      <Pressable
+        style={styles.searchIcon}
+        onPress={() => {
+          setShowSearchBar(!showSearchBar);
+        }}
+      >
+        <SearchIcon />
+      </Pressable>
     </View>
   );
 }
@@ -156,8 +173,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   map: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
   searchContainer: {
     position: "absolute",
@@ -172,6 +189,20 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     // top: Constants.statusBarHeight,
     top: 0,
+  },
+  searchIcon: {
+    position: "absolute",
+    width: "9%",
+    backgroundColor: "#FFFFFFAA",
+    shadowColor: "black",
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 4,
+    elevation: 4,
+    padding: 8,
+    borderRadius: 20,
+    top: 2,
+    left: 2,
   },
   input: {
     borderColor: "#888",
